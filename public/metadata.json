@@ -369,7 +369,7 @@
             },
             {
               "name": "HorizontalOffset",
-              "value": 185
+              "value": 220
             },
             {
               "name": "Vertical",
@@ -377,7 +377,7 @@
             },
             {
               "name": "VerticalOffset",
-              "value": 7
+              "value": 15
             }
           ]
         }
