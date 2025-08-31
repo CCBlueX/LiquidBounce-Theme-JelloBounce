@@ -1,26 +1,27 @@
-![jellobounce-wide1](/.github/img/jellobounce-wide1.png)
+![jellobounce-logo](/.github/img/jellobounce-logo.png)
 
 <p align="center">
     <img src="https://img.shields.io/github/downloads/CCBlueX/LiquidBounce-Theme-JelloBounce/total?label=Github%20Downloads" alt="Downloads">
 </p>
 
 ## Preview
-![ingame-hud](/.github/img/ingame%20hud.png)
+![ingame-hud](/.github/img/ingame-hud.png)
 ![clickgui](/.github/img/clickgui.png)
 ![title](/.github/img/title.png)
 
+## Download
 
-## Check out the optimised version
-[jellobounce-lite](https://github.com/larryngton2/jellobounce/tree/lite)
+You can download the pre-built theme from the latest commit action build artifacts: [Download latest build](https://github.com/CCBlueX/LiquidBounce-Theme-JelloBounce/actions)
 
-## How to install manually
-Clone the repository `git clone https://github.com/larryngton/jellobounce`
+## How to build
 
-CD into the repository
+1. Clone the repository `git clone https://github.com/CCBlueX/LiquidBounce-Theme-JelloBounce.git`
 
-Install dependencies `npm install`
+2. CD into the repository
 
-Compile the theme `npm run build`
+3. Install dependencies `npm install`
+
+4. Compile the theme `npm run build`
 
 ## Stats
 <p align="center"> 
