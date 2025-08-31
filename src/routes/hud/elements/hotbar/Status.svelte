@@ -33,6 +33,7 @@
     right: 5px;
     top: 50%;
     transform: translateY(-50%);
+    scale: 110%;
   }
 
   .icon {
@@ -40,12 +41,15 @@
     left: 5px;
     top: 50%;
     transform: translateY(-50%);
+    filter: drop-shadow($primary-shadow);
   }
 
   .progress {
     position: relative;
-    border-radius: 5px;
-    background-color: rgba($hotbar-base-color, .68);
+    border-radius: 12px;
+    background-color: rgba($background-color, $opacity);
+    box-shadow: $primary-shadow;
+    //border: $border-thing;
 
     &.align-right {
       .label {
@@ -61,7 +65,7 @@
   }
 
   .progress-bar {
-    border-radius: 5px;
+    border-radius: 12px;
     height: 20px;
     will-change: width;
     transition: ease width 0.2s;

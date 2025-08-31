@@ -10,13 +10,16 @@
   @use "../../../../colors.scss" as *;
 
   .tag {
-    background-color: rgba($menu-base-color, 0.36);
-    color: $menu-text-color;
+    background-color: $misc-background-color;
+    color: $text-color;
     font-size: 12px;
     padding: 3px 10px;
     border-radius: 20px;
     margin-left: 10px;
-    transition: ease color .2s, ease background-color .2s;
+    transition:
+      ease color 0.2s,
+      ease background-color 0.2s;
     transform: translateY(-3px);
+    z-index: 1;
   }
 </style>

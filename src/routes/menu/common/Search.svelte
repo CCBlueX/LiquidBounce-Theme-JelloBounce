@@ -15,17 +15,19 @@
   @use "../../../colors.scss" as *;
 
   .search {
-    background-color: rgba($menu-base-color, .36);
+    background-color: $misc-background-color;
     border: none;
-    color: $menu-text-color;
-    font-family: "Inter", sans-serif;
+    color: $text-color;
+    font-family: "sf-pro", sans-serif;
     font-size: 20px;
-    border-radius: 5px;
-    border-bottom: solid 4px $accent-color;
+    border-radius: 12px;
     background-image: url("/img/menu/icon-search.svg");
     background-repeat: no-repeat;
     background-position: 20px center;
-    padding: 20px 20px 20px 60px;
+    padding: 15px 15px 15px 55px;
     flex: 1;
+    box-shadow: $primary-shadow;
+    margin-left: -10px;
+    z-index: 1;
   }
 </style>

@@ -4,7 +4,7 @@
     import {listen} from "../../integration/ws";
     import Module from "./Module.svelte";
     import type {ModuleToggleEvent} from "../../integration/events";
-    import {fade} from "svelte/transition";
+    import { fly } from "svelte/transition";
     import {quintOut} from "svelte/easing";
     import {
         gridSize,
@@ -94,8 +94,7 @@
         offsetX = e.clientX * (2 / $scaleFactor) - panelConfig.left;
         offsetY = e.clientY * (2 / $scaleFactor) - panelConfig.top;
         panelConfig.zIndex = ++$maxPanelZIndex;
-        
-        $showGrid = $snappingEnabled && !expandButtonElement.contains(e.target as HTMLElement);
+        $showGrid = $snappingEnabled;
     }
 
     function onMouseMove(e: MouseEvent) {
@@ -194,7 +193,8 @@
         class="panel"
         style="left: {panelConfig.left}px; top: {panelConfig.top}px; z-index: {panelConfig.zIndex};"
         bind:this={panelElement}
-        transition:fade|global={{duration: 200, easing: quintOut}}
+        in:fly|global={{ y: -30, duration: 200, easing: quintOut }}
+        out:fly|global={{ y: -30, duration: 200, easing: quintOut }}
 >
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div
@@ -208,11 +208,6 @@
                 alt="icon"
         />
         <span class="category">{category}</span>
-
-        <!-- svelte-ignore a11y_consider_explicit_label -->
-        <button class="expand-toggle" on:click={toggleExpanded} bind:this={expandButtonElement}>
-            <div class="icon" class:expanded={panelConfig.expanded}></div>
-        </button>
     </div>
 
     <div
@@ -228,96 +223,66 @@
 </div>
 
 <style lang="scss">
-  @use "../../colors.scss" as *;
+    @use "../../colors.scss" as *;
 
-  .panel {
-    border-radius: 5px;
-    width: 250px;
-    position: absolute;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba($clickgui-base-color, 0.5);
-    will-change: transform;
-    transition: none;
-    user-select: none;
-  }
-
-  .title {
-    display: grid;
-    grid-template-columns: max-content 1fr max-content;
-    align-items: center;
-    column-gap: 12px;
-    background-color: rgba($clickgui-base-color, 0.9);
-    border-bottom: solid 2px $accent-color;
-    padding: 10px 15px;
-    cursor: grab;
-
-    .category {
-      font-size: 14px;
-      color: $clickgui-text-color;
-      font-weight: 500;
-    }
-  }
-
-  .modules {
-    transition: max-height 300ms ease;
-    scroll-behavior: smooth;
-    max-height: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background-color: rgba($clickgui-base-color, 0.8);
-
-    &.expanded {
-      max-height: 545px;
-    }
-  }
-
-  .modules::-webkit-scrollbar {
-    width: 0;
-  }
-
-  .expand-toggle {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-
-    .icon {
-      height: 12px;
-      width: 12px;
-      position: relative;
-
-      &::before {
-        content: "";
+    .panel {
+        border-radius: 12px;
+        width: 225px;
         position: absolute;
-        background-color: white;
-        transition: transform 0.4s ease-out;
-        top: 0;
-        left: 50%;
-        width: 2px;
-        height: 100%;
-        margin-left: -1px;
-      }
+        overflow: hidden;
+        box-shadow: $primary-shadow;
+        will-change: transform;
+        align-items: center;
+        user-select: none;
+    }
 
-      &::after {
-        content: "";
-        position: absolute;
-        background-color: white;
-        transition: transform 0.4s ease-out;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        margin-top: -1px;
-      }
+    .title {
+        display: grid;
+        grid-template-columns: max-content 1fr max-content;
+        align-items: center;
+        column-gap: 12px;
+        padding: 10px;
+        cursor: grab;
+        text-align: center;
+        text-shadow: 0px 0px 20px rgba(150, 150, 150);
+        height: 35px;
+        background-image: linear-gradient(
+            rgba($background-color, 0.6),
+            rgba($background-color, 0.5)
+        );
 
-      &.expanded {
-        &::before {
-          transform: rotate(90deg);
+        .category {
+            left: 50%;
+            transform: translateX(-50%);
+            position: fixed;
+            display: grid;
+            font-size: 15px;
+            color: $text-color;
+            font-weight: 600;
         }
 
-        &::after {
-          transform: rotate(180deg);
+        .icon {
+            border-radius: 4px;
         }
-      }
     }
-  }
+
+    .modules {
+        transition: max-height 400ms ease-in-out;
+        scroll-behavior: smooth;
+        max-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-image: linear-gradient(
+            rgba($background-color, 0.5),
+            rgba($background-color, 0.45)
+        );
+
+        &.expanded {
+            max-height: 545px;
+        }
+    }
+
+    .modules::-webkit-scrollbar-thumb {
+        background-color: rgba(white, 0.15);
+    }
 </style>

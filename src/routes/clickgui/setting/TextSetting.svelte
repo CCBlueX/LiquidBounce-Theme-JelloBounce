@@ -36,22 +36,23 @@
 
   .name {
     font-weight: 500;
-    color: $clickgui-text-color;
+    color: $text-color;
     font-size: 12px;
     margin-bottom: 5px;
   }
 
   .value {
     width: 100%;
-    background-color: rgba($clickgui-base-color, .36);
+    background-color: $misc-background-color;
     font-family: monospace;
     font-size: 12px;
-    color: $clickgui-text-color;
+    color: $text-color;
     border: none;
-    border-bottom: solid 2px $accent-color;
+    border-bottom: solid 2px $setting-color;
     padding: 5px;
-    border-radius: 3px;
-    transition: ease border-color .2s;
+    border-radius: 6px;
+    transition: ease border-color 0.2s;
+    //border: solid 1px rgba(white, 0.1);
 
     &::-webkit-scrollbar {
       background-color: transparent;

@@ -103,33 +103,33 @@
 </div>
 
 <style lang="scss">
-  @use "../../../colors.scss" as *;
+    @use "../../../colors.scss" as *;
 
-  .setting {
-    padding: 7px 0;
-  }
-
-  .change-bind {
-    background-color: transparent;
-    border: solid 2px $accent-color;
-    border-radius: 3px;
-    cursor: pointer;
-    padding: 4px;
-    font-weight: 500;
-    color: $clickgui-text-color;
-    font-size: 12px;
-    font-family: "Inter", sans-serif;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    column-gap: 5px;
-
-    .name {
-      font-weight: 500;
+    .setting {
+        padding: 7px 0;
     }
 
-    .none {
-      color: $clickgui-text-dimmed-color;
+    .change-bind {
+        background-color: transparent;
+        border: solid 2px $setting-color;
+        border-radius: 3px;
+        cursor: pointer;
+        padding: 4px;
+        font-weight: 500;
+        color: $text-color;
+        font-size: 12px;
+        font-family: "Inter", sans-serif;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        column-gap: 5px;
+
+        .name {
+            font-weight: 500;
+        }
+
+        .none {
+            color: $text-dimmed-color;
+        }
     }
-  }
 </style>

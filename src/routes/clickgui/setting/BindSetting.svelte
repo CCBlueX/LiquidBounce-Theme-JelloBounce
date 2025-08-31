@@ -115,40 +115,40 @@
 </div>
 
 <style lang="scss">
-  @use "../../../colors.scss" as *;
+    @use "../../../colors.scss" as *;
 
-  .setting {
-    padding: 7px 0px;
-    display: grid;
-    grid-template-columns: 1fr;
-    column-gap: 5px;
+    .setting {
+        padding: 7px 0px;
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: 5px;
 
-    &.has-value {
-      grid-template-columns: 1fr max-content;
-    }
-  }
-
-  .change-bind {
-    background-color: transparent;
-    border: solid 2px $accent-color;
-    border-radius: 3px;
-    cursor: pointer;
-    padding: 4px;
-    font-weight: 500;
-    color: $clickgui-text-color;
-    font-size: 12px;
-    font-family: "Inter", sans-serif;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    column-gap: 5px;
-
-    .name {
-      font-weight: 500;
+        &.has-value {
+            grid-template-columns: 1fr max-content;
+        }
     }
 
-    .none {
-      color: $clickgui-text-dimmed-color;
+    .change-bind {
+        //border: solid 1px rgba(white, 0.1);
+        background-color: $setting-color;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        padding: 4px;
+        font-weight: 500;
+        color: $text-color;
+        font-size: 12px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        column-gap: 5px;
+
+        .name {
+            font-weight: 500;
+        }
+
+        .none {
+            color: $text-dimmed-color;
+        }
     }
-  }
 </style>

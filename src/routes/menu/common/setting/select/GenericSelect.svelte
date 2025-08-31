@@ -55,25 +55,46 @@
 
     &.expanded {
       .header {
-        border-radius: 5px 5px 0 0;
+        border-radius: 12px;
       }
     }
   }
 
   .header {
-    background-color: $accent-color;
-    padding: 20px;
+    background-color: $misc-background-color;
+    padding: 15px;
     display: flex;
     column-gap: 20px;
     align-items: center;
     justify-content: space-between;
-    border-radius: 5px;
-    transition: ease border-radius .2s;
+    border-radius: 12px;
+    transition: ease 0.2s;
+    z-index: 1;
+    box-shadow: $primary-shadow;
+
+    img {
+      position: absolute;
+      right: 7px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(black, 0.25);
+      padding: 15px 10px;
+      box-shadow: $primary-shadow;
+      border-radius: 7px;
+    }
+
+    &:hover {
+      background-color: rgba($background-color, 0.45);
+    }
 
     .title {
-      color: $menu-text-color;
+      color: white;
       font-size: 20px;
-      font-weight: 500;
+      font-weight: 400;
+
+      span {
+        font-weight: 600;
+      }
     }
   }
 
@@ -81,9 +102,12 @@
     position: absolute;
     z-index: 1000;
     width: 100%;
-    border-radius: 0 0 5px 5px;
-    max-height: 250px;
+    border-radius: 12px;
+    max-height: 75vh;
     overflow: auto;
-    background-color: rgba($menu-base-color, 0.9);
+    background-color: rgba($background-color, $opacity);
+    margin-top: 10px;
+    //border: $border-thing;
+    box-shadow: $primary-shadow;
   }
 </style>

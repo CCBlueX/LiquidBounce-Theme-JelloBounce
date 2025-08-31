@@ -36,33 +36,36 @@
   .button-setting {
     position: relative;
     border: none;
-    background-color: $accent-color;
-    color: $menu-text-color;
-    font-family: "Inter", sans-serif;
-    padding: 20px;
-    border-radius: 5px;
+    background-color: $misc-background-color;
+    color: $text-color;
+    padding: 15px;
+    border-radius: 12px;
     font-size: 20px;
-    transition: ease background-color .2s, ease opacity .2s;
+    transition:
+      ease background-color 0.2s,
+      ease opacity 0.2s;
+    font-weight: 600;
+    box-shadow: $primary-shadow;
 
     &.inset {
       margin: 0 30px;
     }
 
     &.secondary {
-      background-color: rgba($menu-base-color, .36);
+      background-color: $setting-color;
     }
 
     &:not([disabled]):hover {
-      background-color: color.adjust(color.adjust($accent-color, $saturation: -30%), $lightness: -10%);
+      background-color: rgba($background-color, 0.45);
       cursor: pointer;
 
       &.secondary {
-        background-color: color.adjust(color.adjust($menu-base-color, $saturation: -30%), $lightness: -10%);
+        background-color: rgba($background-color, 0.5);
       }
     }
 
     &[disabled] {
-      opacity: .6;
+      opacity: 0.6;
     }
   }
 </style>

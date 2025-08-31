@@ -32,7 +32,7 @@
     <svelte:fragment slot="options">
         {#each options as o}
             <div on:click={() => handleOptionClick(o)} class="option" class:active={values.includes(o)}
-                 transition:slide|global={{ duration: 200, easing: quintOut }}>
+                 transition:slide|global={{ duration: 150, easing: quintOut }}>
                 <span>{o}</span>
             </div>
         {/each}
@@ -40,21 +40,25 @@
 </GenericSelect>
 
 <style lang="scss">
-  @use "../../../../../colors.scss" as *;
+    @use "../../../../../colors.scss" as *;
 
-  .option {
-    font-weight: 500;
-    color: $menu-text-dimmed-color;
-    font-size: 20px;
-    padding: 15px 20px;
-    transition: ease color .2s;
+    .option {
+        font-weight: 400;
+        color: rgba(150, 150, 150);
+        font-size: 20px;
+        padding: 15px 20px;
+        transition: ease color 0.2s;
+        z-index: 1;
 
-    &:hover {
-      color: $menu-text-color;
+        &:hover {
+            background-color: rgba($background-color, 0.1);
+            color: gray;
+        }
+
+        &.active {
+            background-color: $setting-color;
+            color: white;
+            text-shadow: 0px 0px 20px gray;
+        }
     }
-
-    &.active {
-      color: $accent-color;
-    }
-  }
 </style>

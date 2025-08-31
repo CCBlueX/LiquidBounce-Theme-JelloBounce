@@ -1,9 +1,46 @@
-$accent-color: #4677ff;
+$accent-color: #2e2e2e;
+
+$healthprogress-neutral: rgb(200, 200, 200);
+
+// the values here get darker by 0.2
+$healthprogress-gain: rgb(150, 150, 150);
+$healthprogress-lose: rgb(100, 100, 100);
+
+$text-color: white;
+$text-dimmed-color: rgba(211, 211, 211, 255);
+$background-color: black;
+$keystrokes-dimmed-color: rgb(75, 75, 75);
+$misc-background-color: rgba($background-color, 0.36);
+
+$account-online-color: white;
+$account-offline-color: rgb(100, 100, 100);
+$menu-error-color: red;
+
+$opacity: 0.45;
+
+$border-thing: 1px solid rgba(white, 0.15);
+
+$primary-shadow: 0 0 50px 0 rgba(black, 0.5);
+$soft-shadow: 0 0 20px 0 rgba(black, 0.15);
+$text-shadow: 0 0 50px rgba(black, 1);
+$arraylist-shadow-color: black;
+
+$targethud-winning: green;
+$targethud-losing: red;
+$targethud-draw: orange;
+
+$arraylist-tag-color: #AAAAAA;
+
+$shaderfix-color: rgba(black, 0.1); // idk why someone would fucking want this, but sure
+$fade-color: black;
+
+$clickgui-grid-color: rgba(75, 75, 75, 0.25);
+$setting-color: rgba(#2f2f2f, 0.4);
+$setting-background-color: rgba(#2f2f2f, 0.15);
 
 $clickgui-base-color: black;
 $clickgui-text-color: white;
 $clickgui-text-dimmed-color: rgba(211, 211, 211, 255);
-$clickgui-grid-color: rgba(128, 128, 128, 0.25);
 
 $tabgui-base-color: black;
 $tabgui-text-color: white;
@@ -11,7 +48,6 @@ $tabgui-text-dimmed-color: rgba(211, 211, 211, 255);
 
 $arraylist-base-color: black;
 $arraylist-text-color: white;
-$arraylist-tag-color: #AAAAAA;
 
 $targethud-base-color: black;
 $targethud-text-color: white;
@@ -30,7 +66,6 @@ $menu-account-premium-color: #67D24A;
 $menu-base-color: black;
 $menu-text-color: white;
 $menu-text-dimmed-color: rgba(211, 211, 211, 255);
-$menu-error-color: #fc4130;
 $menu-button-loader-color: white;
 
 $scoreboard-base-color: black;

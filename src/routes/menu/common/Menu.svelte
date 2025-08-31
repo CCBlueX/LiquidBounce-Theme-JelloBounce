@@ -1,37 +1,51 @@
 <script lang="ts">
-    import Header from "./header/Header.svelte";
-    import {fly} from "svelte/transition";
-    import {onMount} from "svelte";
+  import Header from "./header/Header.svelte";
+  import { scale } from "svelte/transition";
+  import { onMount } from "svelte";
+  import { expoOut } from "svelte/easing";
 
-    const transitionDuration = 700; // TODO: suboptimal
+  const transitionDuration = 550; // TODO: suboptimal
 
-    let ready = false;
+  let ready = false;
 
-    onMount(() => {
-        setTimeout(() => {
-            ready = true;
-        }, transitionDuration);
-    });
+  onMount(() => {
+    setTimeout(() => {
+      ready = true;
+    }, transitionDuration);
+  });
 </script>
 
+<div class="shaderfix"></div>
 <div class="menu">
-    {#if ready}
-        <div transition:fly|global={{duration: 700, y: -100}}>
-            <Header/>
-        </div>
+  {#if ready}
+    <div transition:scale|global={{ duration: 500, easing: expoOut }}>
+      <Header />
+    </div>
 
-        <div class="menu-wrapper">
-            <slot/>
-        </div>
-    {/if}
+    <div class="menu-wrapper">
+      <slot />
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
+  @use "../../../colors.scss" as *;
+
   .menu {
-    padding: 50px;
+    padding: 45px;
     display: flex;
     flex-direction: column;
     height: 100vh;
+  }
+
+  .shaderfix {
+    top: -500px;
+    left: -500px;
+    position: absolute;
+    background-color: $shaderfix-color;
+    width: 99999px;
+    height: 99999px;
+    z-index: -9999999;
   }
 
   .menu-wrapper {

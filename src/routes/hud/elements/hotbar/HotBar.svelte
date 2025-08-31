@@ -55,7 +55,7 @@
         }
         overlayMessageTimeout = setTimeout(() => {
             overlayMessage = null;
-        }, 3000)
+        }, 3000);
     });
 
     onMount(async () => {
@@ -64,28 +64,36 @@
 </script>
 
 {#if playerData && playerData.gameMode !== "spectator"}
-    <div class="hotbar">
+    <div
+        class="hotbar"
+        transition:fly={{ duration: 700, y: 50, easing: expoOut }}
+    >
         {#if overlayMessage !== null}
-            <div class="overlay-message" out:fade={{duration: 200}}
-                 style="max-width: {slotsElement?.offsetWidth ?? 0}px">
-                <TextComponent fontSize={14} textComponent={overlayMessage.text} allowPreformatting={true} />
+            <div
+                class="overlay-message"
+                transition:fade|global={{ duration: 200 }}
+                style="max-width: {slotsElement?.offsetWidth ?? 0}px"
+            >
+                <TextComponent
+                    fontSize={14}
+                    textComponent={overlayMessage.text}
+                />
             </div>
         {/if}
         {#if showItemStackName && itemStackName !== null}
-            <div class="item-name" out:fade={{duration: 200}}>
-                <TextComponent fontSize={14} textComponent={itemStackName}/>
+            <div class="item-name" transition:fade|global={{ duration: 200 }}>
+                <TextComponent fontSize={14} textComponent={itemStackName} />
             </div>
         {/if}
         <div class="status">
-
             <div class="pair">
                 {#if playerData.armor > 0}
                     <Status
-                            max={20}
-                            value={playerData.armor}
-                            color="#49EAD6"
-                            alignRight={false}
-                            icon="shield"
+                        max={20}
+                        value={playerData.armor}
+                        color="#555555"
+                        alignRight={false}
+                        icon="shield"
                     />
                 {:else}
                     <div></div>
@@ -93,10 +101,10 @@
 
                 {#if playerData.air < playerData.maxAir}
                     <Status
-                            max={playerData.maxAir}
-                            value={playerData.air}
-                            color="#AAC1E3"
-                            alignRight={true}
+                        max={playerData.maxAir}
+                        value={playerData.air}
+                        color="#555555"
+                        alignRight={true}
                     />
                 {:else}
                     <div></div>
@@ -107,10 +115,11 @@
                 {#if playerData.absorption > 0}
                     <div class="pair">
                         <Status
-                                max={maxAbsorption}
-                                value={playerData.absorption}
-                                color="#D4AF37"
-                                alignRight={false}
+                            max={maxAbsorption}
+                            value={playerData.absorption}
+                            color="#555555"
+                            alignRight={false}
+                            icon="heart2"
                         />
 
                         <div></div>
@@ -118,30 +127,30 @@
                 {/if}
                 <div class="pair">
                     <Status
-                            max={playerData.maxHealth}
-                            value={playerData.health}
-                            color="#FC4130"
-                            alignRight={false}
-                            icon="heart"
+                        max={playerData.maxHealth}
+                        value={playerData.health}
+                        color="#444444"
+                        alignRight={false}
+                        icon="heart"
                     />
                     <Status
-                            max={20}
-                            value={playerData.food}
-                            color="#B88458"
-                            alignRight={true}
-                            icon="food"
+                        max={20}
+                        value={playerData.food}
+                        color="#444444"
+                        alignRight={true}
+                        icon="food"
                     />
                 </div>
             {/if}
             {#if playerData.experienceLevel > 0}
                 <Status
-                        max={100} value={playerData.experienceProgress * 100}
-                        color="#88C657"
-                        alignRight={false}
-                        label={playerData.experienceLevel.toString()}
+                    max={100}
+                    value={playerData.experienceProgress * 100}
+                    color="#333333"
+                    alignRight={false}
+                    label={playerData.experienceLevel.toString()}
                 />
             {/if}
-
         </div>
 
         <div class="hotbar-elements">
@@ -160,78 +169,94 @@
         </div>
 
         {#if playerData?.offHandStack.identifier !== "minecraft:air"}
-            <div class="offhand-slot"></div>
+            <div
+                class="offhand-slot"
+                transition:fade|global={{ duration: 150 }}
+            ></div>
         {/if}
     </div>
 {/if}
 
 <style lang="scss">
-  @use "../../../../colors.scss" as *;
+    @use "../../../../colors.scss" as *;
 
-  .pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 25px;
-  }
-
-  .status {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 5px;
-    row-gap: 5px;
-    column-gap: 20px;
-  }
-
-  .hotbar-elements {
-    background-color: rgba($hotbar-base-color, 0.68);
-    position: relative;
-    border-radius: 5px;
-    overflow: hidden;
-
-    .slider {
-      border: solid 2px $accent-color;
-      height: 45px;
-      width: 45px;
-      position: absolute;
-      border-radius: 5px;
-      /* transition: linear left 0.05s; TODO: Animation is possible but annoying */
+    .hotbar {
+        //position: fixed;
+        //bottom: 15px;
+        //left: 50%;
+        //transform: translateX(-50%);
     }
 
-    .slots {
-      display: flex;
+    .pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 25px;
+        border-radius: 12px;
     }
 
-    .slot {
-      height: 45px;
-      width: 45px;
+    .status {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+        row-gap: 5px;
+        column-gap: 20px;
     }
-  }
 
-  .offhand-slot {
-    height: 45px;
-    width: 45px;
-    border-radius: 5px;
-    background-color: rgba($hotbar-base-color, 0.68);
-    position: absolute;
-    bottom: 0;
-    left: -65px;
-  }
+    .hotbar-elements {
+        background-color: rgba($background-color, $opacity);
+        position: relative;
+        border-radius: 12px;
+        box-shadow: $primary-shadow;
+        //border: $border-thing;
 
-  .item-name {
-    color: $hotbar-text-color;
-    font-size: 14px;
-    margin: 0 auto 15px;
-    font-weight: 500;
-    background-color: rgba($hotbar-base-color, .68);
-    padding: 5px 8px;
-    border-radius: 5px;
-    width: max-content;
-  }
+        .slider {
+            height: 45px;
+            width: 45px;
+            padding-left: 10px;
+            position: absolute;
+            border-radius: 12px;
+            transition: ease 0.15s;
+            box-shadow: $primary-shadow;
+            background-color: rgba($background-color, 0.2);
+            scale: 90%;
+        }
 
-  .overlay-message {
-    text-align: center;
-    color: $hotbar-text-color;
-    margin-bottom: 15px;
-    overflow: hidden;
-  }
+        .slots {
+            display: flex;
+        }
+
+        .slot {
+            height: 45px;
+            width: 45px;
+        }
+    }
+
+    .offhand-slot {
+        height: 45px;
+        width: 45px;
+        border-radius: 12px;
+        background-color: rgba(black, $opacity);
+        position: absolute;
+        bottom: 0;
+        left: -65px;
+        box-shadow: $primary-shadow;
+        //border: $border-thing;
+    }
+
+    .item-name {
+        color: white;
+        scale: 110%;
+        margin: 0 auto 15px;
+        font-weight: 500;
+        width: max-content;
+        text-shadow: 0px 0px 10px rgba(black, 0.7);
+    }
+
+    .overlay-message {
+        scale: 110%;
+        text-align: center;
+        color: white;
+        margin-bottom: 22px;
+        text-shadow: 0px 0px 10px rgba(black, 0.7);
+    }
 </style>

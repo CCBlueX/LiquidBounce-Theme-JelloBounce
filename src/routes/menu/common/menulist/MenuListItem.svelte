@@ -51,22 +51,29 @@
   .menu-list-item {
     display: grid;
     grid-template-areas:
-        "a b c"
-        "a d c";
+      "a b c"
+      "a d c";
     grid-template-columns: max-content 1fr max-content;
-    background-color: rgba($menu-base-color, .36);
-    padding: 15px 25px;
+    background-color: $misc-background-color;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-right: 20px;
     column-gap: 15px;
-    border-radius: 5px;
-    transition: ease background-color .2s;
+    border-radius: 12px;
+    margin-left: -13.5px;
+    margin-right: -13.5px;
+    transition: ease background-color 0.25s;
     align-items: center;
     cursor: grab;
+    box-shadow: $primary-shadow;
+    z-index: 1;
 
     &:hover {
-      background-color: $accent-color;
+      background-color: rgba($accent-color, 0.7);
 
       .subtitle {
-        color: $menu-text-color;
+        color: $text-color;
       }
 
       .buttons .active {
@@ -104,7 +111,7 @@
       bottom: 0;
       right: 0;
       display: none;
-      color: $menu-text-color;
+      color: $text-color;
       font-size: 12px;
       padding: 3px 10px;
       border-radius: 20px;
@@ -123,7 +130,7 @@
 
     .text {
       font-size: 20px;
-      color: $menu-text-color;
+      color: $text-color;
       font-weight: 600;
     }
   }
@@ -131,8 +138,8 @@
   .subtitle {
     grid-area: d;
     font-size: 18px;
-    color: $menu-text-dimmed-color;
-    transition: ease color .2s;
+    color: $text-dimmed-color;
+    transition: ease color 0.2s;
     align-self: flex-start;
   }
 
@@ -143,7 +150,7 @@
     .active {
       margin-right: 20px;
       opacity: 0;
-      transition: ease opacity .2s;
+      transition: ease opacity 0.2s;
     }
   }
 </style>

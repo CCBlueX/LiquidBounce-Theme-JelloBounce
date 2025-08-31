@@ -26,7 +26,7 @@
 
 {#key data}
     {#if data !== null}
-        <div transition:fly|global={{duration: 200, x: anchor === "right" ? -15 : 15}} class="description-wrapper"
+        <div transition:fly|global={{duration: 150, x: anchor === "right" ? -15 : 15}} class="description-wrapper"
              style="top: {data.y}px; left: {left}px;" bind:this={element}>
             <div class="description" class:right={anchor === "left"}>
                 <div class="text">{data.description}</div>
@@ -40,15 +40,18 @@
 
   .description-wrapper {
     position: fixed;
-    z-index: 999999999999;
+    z-index: 999999999999; // high value to ensure it appears on top
     transform: translateY(-50%);
+    pointer-events: none;
   }
 
   .description {
     position: relative;
-    border-radius: 5px;
-    background-color: rgba($clickgui-base-color, .9);
-    filter: drop-shadow(0 0 10px rgba($clickgui-base-color, 0.5));
+    border-radius: 12px;
+    background-color: $accent-color;
+    filter: drop-shadow($primary-shadow);
+    left: 15px;
+    pointer-events: none;
 
     &::before {
       content: "";
@@ -56,10 +59,10 @@
       position: absolute;
       width: 0;
       height: 0;
-      border-top: 8px solid transparent;
-      border-bottom: 8px solid transparent;
-      border-right: 8px solid rgba($clickgui-base-color, .9);
-      left: -8px;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-right: 5px solid $accent-color;
+      left: -5px;
       top: 50%;
       transform: translateY(-50%);
     }
@@ -75,7 +78,8 @@
 
   .text {
     font-size: 12px;
-    padding: 10px;
-    color: $clickgui-text-color;
+    padding: 7px;
+    color: $text-color;
+    pointer-events: none;
   }
 </style>

@@ -51,18 +51,24 @@
 </script>
 
 <div class="header">
-    <img class="logo" src="img/lb-logo.svg" alt="logo">
-
     <Notifications />
-
-    <Account/>
 </div>
 
 <style lang="scss">
+  @use "../../../../colors.scss" as *;
+
   .header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 60px;
     align-items: center;
+    z-index: 1;
+
+    .notifications {
+      position: fixed;
+      left: 50%;
+      bottom: 50px;
+      transform: translateX(-50%);
+      z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+    }
   }
 </style>

@@ -191,15 +191,19 @@
     left: 50%;
     top: 50px;
     transform: translateX(-50%);
-    background-color: rgba($clickgui-base-color, 0.9);
     width: 600px;
-    border-radius: 30px;
+    border-radius: 50px;
     overflow: hidden;
     transition: ease border-radius 0.2s;
-    box-shadow: 0 0 10px rgba($clickgui-base-color, 0.5);
+    box-shadow: $primary-shadow;
+    background-image: linear-gradient(
+      rgba($background-color, 0.6),
+      rgba($background-color, 0.5),
+      rgba($background-color, 0.45)
+    );
 
     &.has-results {
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
     &:focus-within {
@@ -208,7 +212,6 @@
   }
 
   .results {
-    border-top: solid 2px $accent-color;
     padding: 5px 25px;
     max-height: 250px;
     overflow: auto;
@@ -222,44 +225,53 @@
       grid-template-columns: max-content 1fr max-content;
 
       .module-name {
-        color: $clickgui-text-dimmed-color;
-        transition: ease color 0.2s;
+        position: relative;
+        color: rgba(150, 150, 150);
+        transition: color 0.2s ease;
       }
 
       &.enabled {
         .module-name {
-          color: $accent-color;
+          color: white;
+          text-shadow: 0px 0px 20px gray;
         }
       }
 
       .aliases {
-        color: rgba($clickgui-text-dimmed-color, .6);
+        color: rgba($text-dimmed-color, 0.6);
         margin-left: 10px;
       }
+
+      font-size: 16px;
+      padding: 10px 0;
+      transition: ease padding-left 0.2s;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: max-content 1fr max-content;
 
       &.selected {
         padding-left: 10px;
       }
 
+      .module-name::after {
+        width: calc(100% + 8px);
+      }
+
       &:hover {
-        color: $clickgui-text-color;
+        color: $text-color;
 
         &::after {
           content: "Right-click to locate";
-          color: rgba($clickgui-text-color, 0.4);
+          color: rgba($text-color, 0.4);
           font-size: 12px;
         }
       }
     }
 
     .placeholder {
-      color: $clickgui-text-dimmed-color;
+      color: $text-dimmed-color;
       font-size: 16px;
       padding: 10px 0;
-    }
-
-    &::-webkit-scrollbar {
-      width: 0;
     }
   }
 
@@ -267,9 +279,8 @@
     padding: 15px 25px;
     background-color: transparent;
     border: none;
-    font-family: "Inter", sans-serif;
     font-size: 16px;
-    color: $clickgui-text-color;
+    color: $text-color;
     width: 100%;
   }
 </style>

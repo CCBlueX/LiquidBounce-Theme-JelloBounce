@@ -34,14 +34,18 @@
   @use "../../../colors.scss" as *;
 
   .scoreboard {
-    width: max-content;
-    border-radius: 5px;
+    min-width: 200px;
+    //position: fixed;
+    //left: 15px;
+    //top: 550px;
+    border-radius: 12px;
     overflow: hidden;
-    font-size: 14px;
+    box-shadow: $primary-shadow;
+    //border: $border-thing;
   }
 
   .entries {
-    background-color: rgba($scoreboard-base-color, 0.5);
+    background-color: rgba($background-color, $opacity);
     padding: 10px;
   }
 
@@ -53,7 +57,7 @@
 
   .header {
     text-align: center;
-    background-color: rgba($scoreboard-base-color, 0.68);
+    background-color: rgba($background-color, $opacity);
     padding: 7px 10px;
   }
 </style>

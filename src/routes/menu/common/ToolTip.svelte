@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {fly} from "svelte/transition";
+    import {fade} from "svelte/transition";
     import {afterUpdate} from "svelte";
 
     export let text: string;
@@ -20,18 +20,21 @@
 </script>
 
 <div bind:this={element}>
-    {#if shown}
-        <div transition:fly="{{ y: -10, duration: 200 }}" class="tooltip" style="background-color: {color};">{text}</div>
-    {/if}
+  {#if shown}
+    <div transition:fade={{ duration: 100 }} class="tooltip">
+      {text}
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
   @use "../../../colors.scss" as *;
 
   .tooltip {
+    background-color: $accent-color;
     color: white;
-    padding: 10px 15px;
-    border-radius: 20px;
+    padding: 7px 10px;
+    border-radius: 12px;
     font-size: 16px;
     font-weight: 600;
     position: absolute;
@@ -40,12 +43,13 @@
     top: 0;
     transform: translate(-50%, -45px);
     z-index: 1000;
+    box-shadow: $primary-shadow;
 
     &::after {
       content: "";
       display: block;
-      height: 12px;
-      width: 12px;
+      height: 7px;
+      width: 7px;
       background-color: inherit;
       position: absolute;
       left: 50%;

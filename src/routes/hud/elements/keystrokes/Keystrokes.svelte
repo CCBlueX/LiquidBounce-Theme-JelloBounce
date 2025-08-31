@@ -35,13 +35,13 @@
 </div>
 
 <style lang="scss">
-    .keystrokes {
-      display: grid;
-      grid-template-areas:
-        ". a ."
-        "b c d"
-        "e e e";
-      grid-template-columns: repeat(3, 50px);
-      gap: 5px;
-    }
+  .keystrokes {
+    display: grid;
+    grid-template-areas:
+      ". a ."
+      "b c d"
+      "e e e";
+    grid-template-columns: repeat(3, 35px);
+    gap: 2px;
+  }
 </style>

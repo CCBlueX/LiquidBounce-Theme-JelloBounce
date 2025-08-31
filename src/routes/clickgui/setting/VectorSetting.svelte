@@ -63,15 +63,15 @@
 
     input.value {
       width: 100%;
-      background-color: rgba($clickgui-base-color, .36);
+      background-color: $misc-background-color;
       font-family: monospace;
       font-size: 12px;
-      color: $clickgui-text-color;
+      color: $text-color;
       border: none;
-      border-bottom: solid 2px $accent-color;
+      border-bottom: solid 2px $setting-color;
       padding: 5px;
       border-radius: 3px;
-      transition: ease border-color .2s;
+      transition: ease border-color 0.2s;
       appearance: textfield;
 
       &::-webkit-scrollbar {
@@ -91,7 +91,7 @@
       background-color: transparent;
       border: none;
       cursor: pointer;
-      color: $clickgui-text-color;
+      color: $text-color;
       font-size: 12px;
       text-align: right;
     }

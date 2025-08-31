@@ -62,26 +62,34 @@
         transform: translateY(-50%) rotate(0);
         opacity: 1;
       }
-
-      .head {
-        border-radius: 3px 3px 0 0;
-      }
     }
   }
 
   .head {
-    background-color: $accent-color;
+    background-color: $setting-color;
     padding: 6px 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     position: relative;
-    border-radius: 3px;
-    transition: ease border-radius .2s;
+    border-radius: 6px;
+    transition: ease border-radius 0.2s;
+    max-width: 210px;
+    //border: solid 1px rgba(white, 0.1);
+
+    .box {
+      position: absolute;
+      right: 5px;
+      background-color: rgba(black, 0.25);
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      //border: solid 1px rgba(white, 0.1);
+    }
 
     .text {
       font-weight: 500;
-      color: $clickgui-text-color;
+      color: $text-color;
       font-size: 12px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -95,30 +103,33 @@
       position: absolute;
       height: 10px;
       width: 10px;
-      right: 10px;
+      right: 5px;
       top: 50%;
       background-image: url("/img/clickgui/icon-settings-expand.svg");
       background-position: center;
       background-repeat: no-repeat;
       transform-origin: 50% 50%;
       transform: translateY(-50%) rotate(-90deg);
-      transition: ease opacity 0.2s,
-      ease transform 0.4s;
+      transition:
+        ease opacity 0.2s,
+        ease transform 0.4s;
+      padding: 5px;
     }
   }
 
   .options {
     padding: 6px 10px;
-    background-color: $clickgui-base-color;
+    background-color: rgba($background-color, 0.7);
     border: solid 1px $accent-color;
     border-top: none;
-    border-radius: 0 0 3px 3px;
+    border-radius: 6px;
     z-index: 9999;
     width: 100%;
     position: absolute;
+    margin-top: 7px;
 
     .option {
-      color: $clickgui-text-dimmed-color;
+      color: $text-dimmed-color;
       font-weight: 500;
       font-size: 12px;
       padding: 5px 0;
@@ -127,7 +138,7 @@
       transition: ease color 0.2s;
 
       &:hover {
-        color: $clickgui-text-color;
+        color: $text-color;
       }
 
       &.active {

@@ -66,18 +66,32 @@
 
   $GRID_SIZE: 10px;
 
+  .background {
+    background-color: rgba($background-color, 0.45);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -5;
+    height: 100vh;
+    width: 100vw;
+  }
+
   .clickgui {
-    background-color: rgba($clickgui-base-color, 0.6);
     overflow: hidden;
     position: absolute;
     will-change: opacity;
-    transform-origin: top left;
     left: 0;
     top: 0;
+    z-index: 1;
 
     &.grid {
-      background-image: linear-gradient(to right, $clickgui-grid-color 1px, transparent 1px),
-      linear-gradient(to bottom, $clickgui-grid-color 1px, transparent 1px);
+      z-index: 999999999;
+      background-image: linear-gradient(
+          to right,
+          $clickgui-grid-color 1px,
+          transparent 1px
+        ),
+        linear-gradient(to bottom, $clickgui-grid-color 1px, transparent 1px);
     }
   }
 </style>

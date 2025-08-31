@@ -60,21 +60,29 @@
 </div>
 
 <style lang="scss">
-  @use "../../../colors.scss" as *;
+    @use "../../../colors.scss" as *;
 
-  .module {
-    background-color: rgba($arraylist-base-color, 0.68);
-    color: $arraylist-text-color;
-    font-size: 14px;
-    border-radius: 4px 0 0 4px;
-    padding: 5px 8px;
-    border-left: solid 4px $accent-color;
-    width: max-content;
-    font-weight: 500;
-    margin-left: auto;
-  }
+    .arraylist {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
 
-  .tag {
-    color: $arraylist-tag-color;
-  }
+    .module {
+        background-color: rgba($background-color, $opacity);
+        color: $text-color;
+        font-size: 15px;
+        padding: 5px 7px;
+        width: max-content;
+        font-weight: 400;
+        text-shadow: $primary-shadow;
+        position: relative;
+        z-index: 1;
+        //box-shadow: -5px 0px 10px rgba($arraylist-shadow-color, 0.27), 5px 0px 10px rgba($arraylist-shadow-color, 0.27);
+        box-shadow: $primary-shadow;
+    }
+
+    .tag {
+        color: $arraylist-tag-color;
+    }
 </style>

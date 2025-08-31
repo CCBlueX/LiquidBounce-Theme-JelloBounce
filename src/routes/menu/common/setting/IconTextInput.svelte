@@ -26,37 +26,45 @@
 
   .icon-text-input {
     display: grid;
-    grid-template-columns: max-content 1fr max-content;
+    grid-template-columns: max-content 1fr 60px;
+    margin-bottom: -15px;
+    box-shadow: $primary-shadow;
+    border-radius: 12px;
   }
 
   .icon {
     height: 64px;
     width: 64px;
-    background-color: $accent-color;
+    background-color: rgba($background-color, 0.35);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px 0 0 5px;
+    border-radius: 12px 0 0 12px;
   }
 
   .input {
-    color: $menu-text-color;
-    font-family: "Inter", sans-serif;
+    color: $text-color;
     font-size: 20px;
-    background-color: rgba($menu-base-color, .36);
+    background-color: $setting-color;
     border: none;
     padding: 0 20px 0 18px;
-    border-radius: 0 5px 5px 0;
-    border-left: solid 2px $menu-base-color;
     width: 100%;
 
     &:invalid {
       border: solid 2px $menu-error-color;
+      box-shadow: 0 0 10px rgba(red, 0.25);
     }
   }
 
   .button-container {
     display: flex;
     align-items: center;
+    background-color: $setting-color;
+    border-radius: 0 12px 12px 0;
+    transition: ease background-color 0.25s;
+
+    &:hover {
+      background-color: rgba($background-color, 0.35);
+    }
   }
 </style>

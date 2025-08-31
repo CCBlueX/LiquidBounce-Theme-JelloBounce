@@ -44,14 +44,15 @@
                    disabled={$isLoggingIn}/>
 </div>
 
+
 <style lang="scss">
-  .reconnect {
-    position: fixed;
-    bottom: 20px;
-    left: 45px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-    align-items: flex-start;
-  }
+    .reconnect {
+        position: fixed;
+        bottom: 20px;
+        left: 45px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        align-items: flex-start;
+    }
 </style>

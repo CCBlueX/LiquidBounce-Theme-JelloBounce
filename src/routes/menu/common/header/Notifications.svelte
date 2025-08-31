@@ -32,7 +32,7 @@
 
 <div class="notifications">
     {#each notifications as n (n.id)}
-        <div class="notification" transition:fly|global={{duration: 500, y: -100}}>
+        <div class="notification" transition:fly|global={{duration: 500, y: 100}}>
             <div class="icon" class:error={n.notification.error}>
                 <img src="img/hud/notification/icon-info.svg" alt="info">
             </div>
@@ -48,24 +48,27 @@
   .notifications {
     display: grid;
     grid-template-columns: 1fr;
+    z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
   }
 
   .notification {
     grid-row-start: 1;
     grid-column-start: 1;
-    background-color: rgba($menu-base-color, 0.68);
-    border-radius: 5px;
+    background-color: rgba($background-color, $opacity);
+    border-radius: 12px;
     display: grid;
     grid-template-areas:
-        "a b"
-        "a c";
+      "a b"
+      "a c";
     grid-template-columns: max-content 1fr;
     overflow: hidden;
-    padding-right: 10px;
-    min-width: 350px;
+    padding-right: 7px;
+    //border: $border-thing;
+    box-shadow: $primary-shadow;
+    text-shadow: $primary-shadow;
 
     .title {
-      color: $menu-text-color;
+      color: $text-color;
       font-weight: 600;
       font-size: 18px;
       grid-area: b;
@@ -73,20 +76,19 @@
     }
 
     .message {
-      color: $menu-text-dimmed-color;
-      font-weight: 500;
+      color: $text-dimmed-color;
+      font-weight: 400;
       grid-area: c;
     }
 
     .icon {
       grid-area: a;
-      height: 65px;
-      width: 65px;
-      background-color: $accent-color;
+      height: 55px;
+      width: 55px;
+      //background-color: rgba($accent-color, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 10px;
 
       &.error {
         background-color: $menu-error-color;

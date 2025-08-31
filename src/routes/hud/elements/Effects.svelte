@@ -43,13 +43,27 @@
   @use "../../../colors.scss" as *;
 
   .effect {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
-    text-align: right;
+    text-align: left;
+    background-color: rgba($background-color, $opacity);
+    padding: 5px 8px;
+    box-shadow: $primary-shadow;
+    text-shadow: $primary-shadow;
+    //border: $border-thing;
 
     .duration {
-      font-family: monospace;
       color: white;
     }
+  }
+
+  .effect:first-child {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+
+  .effect:last-child {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
   }
 </style>

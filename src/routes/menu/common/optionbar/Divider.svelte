@@ -4,9 +4,9 @@
   @use "../../../../colors.scss" as *;
 
   .divider {
-    height: 100%;
+    height: 50px;
     width: 4px;
-    background-color: rgba($menu-base-color, .36);
-    border-radius: 5px;
+    background-color: rgba($background-color, 0.3);
+    border-radius: 12px;
   }
 </style>

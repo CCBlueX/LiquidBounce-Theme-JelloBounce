@@ -1,32 +1,34 @@
 <script lang="ts">
-    import {fade, fly} from "svelte/transition";
-    import {createEventDispatcher} from "svelte";
+  import { fade, fly, scale } from "svelte/transition";
+  import { createEventDispatcher } from "svelte";
+  import { expoOut } from "svelte/easing";
 
-    export let title: string;
-    export let visible: boolean;
+  export let title: string;
+  export let visible: boolean;
 
-    const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
-    function handleClick() {
-        dispatch("close");
-        visible = false;
-    }
+  function handleClick() {
+    dispatch("close");
+    visible = false;
+  }
 </script>
 
 {#if visible}
-    <div class="modal-wrapper" transition:fade|global={{duration: 200}}>
-        <div class="modal" in:fly|global={{duration: 300, y: -100}} out:fly|global={{duration: 300, y: -100}}>
-            <button class="button-modal-close" on:click={handleClick}>
-                <img src="img/menu/icon-close.svg" alt="close">
-            </button>
+  <div class="modal-wrapper" transition:fade|global={{ duration: 250 }}>
+    <div class="modal" transition:scale={{ duration: 500, easing: expoOut }}>
+      <button class="button-modal-close" on:click={handleClick}>
+        <img src="img/menu/icon-close.svg" alt="close" />
+      </button>
 
-            <div class="title">{title}</div>
-
-            <div class="content">
-                <slot />
-            </div>
-        </div>
+      <div class="title">
+        {title}
+      </div>
+      <div class="content">
+        <slot />
+      </div>
     </div>
+  </div>
 {/if}
 
 <style lang="scss">
@@ -38,44 +40,31 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba($menu-base-color, 0.5);
+    background-color: rgba($background-color, 0.15);
     z-index: 99999;
+    backdrop-filter: blur(15px);
   }
 
   .modal {
-    background-color: rgba($menu-base-color, 0.7);
+    background-color: rgba($background-color, $opacity);
     min-width: 500px;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    padding: 40px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba($menu-base-color, 0.5);
+    border-radius: 12px;
+    box-shadow: $primary-shadow;
   }
 
   .title {
-    color: $menu-text-color;
+    color: $text-color;
     font-size: 34px;
     position: relative;
     width: max-content;
-    align-self: center;
-    margin-bottom: 80px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      display: block;
-      height: 8px;
-      width: calc(90%);
-      background-color: $accent-color;
-      bottom: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 10px;
-    }
+    margin-bottom: 25px;
   }
 
   .content {
@@ -91,16 +80,16 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    border: solid 2px $menu-text-color;
+    border: none;
     border-radius: 50%;
     cursor: pointer;
     top: 20px;
     right: 20px;
     position: fixed;
-    transition: ease background-color .2s;
+    transition: ease background-color 0.25s;
 
     &:hover {
-      background-color: rgba($menu-text-color, 0.1);
+      background-color: rgba($text-color, 0.1);
     }
   }
 

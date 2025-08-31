@@ -25,22 +25,29 @@
   @use "../../../../colors.scss" as *;
 
   .key {
-    height: 50px;
-    background-color: rgba($keystrokes-base-color, .68);
-    color: $keystrokes-text-color;
+    height: 35px;
+    background-color: rgba($background-color, $opacity);
+    color: $text-color;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 7px;
     font-size: 14px;
     font-weight: 500;
-    transition: ease box-shadow .2s;
+    transition:
+      ease scale 0.1s,
+      ease background-color 0.2s;
     position: relative;
-    box-shadow: inset 0 0 0 0 $accent-color;
     text-align: center;
+    box-shadow: $primary-shadow;
+    //border: $border-thing;
+    text-shadow: $primary-shadow;
 
     &.active {
-      box-shadow: inset 0 0 0 25px $accent-color;
+      background-color: rgba($accent-color, 0.7);
+      scale: 95%;
+      align-self: center;
+      color: $text-dimmed-color;
     }
   }
 </style>

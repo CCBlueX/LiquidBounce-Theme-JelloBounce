@@ -52,7 +52,7 @@
   }
 
   .title {
-    color: $clickgui-text-color;
+    color: $text-color;
     font-size: 12px;
     font-weight: 600;
   }
@@ -60,7 +60,7 @@
   .head {
     display: flex;
     justify-content: space-between;
-    transition: ease margin-bottom .2s;
+    transition: ease margin-bottom 0.2s;
 
     &.expanded {
       margin-bottom: 10px;
@@ -68,7 +68,10 @@
   }
 
   .nested-settings {
-    border-left: solid 2px $accent-color;
-    padding-left: 7px;
+    border: solid 1px rgba(#2f2f2f, 0.5);
+    background-color: rgba(black, 0.2);
+    border-radius: 6px;
+    padding: 7px;
+    box-shadow: $soft-shadow;
   }
 </style>

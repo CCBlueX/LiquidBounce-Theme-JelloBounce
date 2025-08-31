@@ -133,72 +133,79 @@
 </div>
 
 <style lang="scss">
-  @use "../../colors.scss" as *;
+    @use "../../colors.scss" as *;
 
-  .module {
-    position: relative;
+    .module {
+        position: relative;
 
-    .name {
-      cursor: pointer;
-      transition: ease background-color 0.2s,
-      ease color 0.2s;
+        .name {
+            cursor: pointer;
+            transition:
+                ease background-color 0.2s,
+                ease color 0.2s;
+            color: rgba(150, 150, 150);
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            position: relative;
+            padding: 10px;
+            align-items: center;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
 
-      color: $clickgui-text-dimmed-color;
-      text-align: center;
-      font-size: 12px;
-      font-weight: 500;
-      position: relative;
-      padding: 10px;
+            &.highlight::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: calc(100% - 4px);
+                height: calc(100% - 4px);
+                border: solid 2px $accent-color;
+                border-radius: 6px;
+                box-shadow: 0 0 10px rgba($accent-color, 0.7);
+            }
 
-      &.highlight::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: calc(100% - 4px);
-        height: calc(100% - 4px);
-        border: solid 2px $accent-color;
-      }
+            &:hover {
+                background: rgba($background-color, 0.2);
+                color: gray;
+            }
 
-      &:hover {
-        background-color: rgba($clickgui-base-color, 0.85);
-        color: $clickgui-text-color;
-      }
+            &.enabled {
+                color: white;
+                text-shadow: 0px 0px 20px gray;
+            }
+        }
 
-      &.enabled {
-        color: $accent-color;
-      }
+        .settings {
+            background-color: $setting-background-color;
+            padding: 0 11px 0 7px;
+        }
+
+        &.has-settings {
+            .name::after {
+                content: "";
+                display: block;
+                position: absolute;
+                height: 10px;
+                width: 10px;
+                right: 15px;
+                top: 50%;
+                background-image: url("");
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0.5;
+                transform-origin: 50% 50%;
+                transform: translateY(-50%) rotate(-90deg);
+                transition:
+                    ease opacity 0.2s,
+                    ease transform 0.4s;
+            }
+
+            &.expanded .name::after {
+                transform: translateY(-50%) rotate(0);
+                opacity: 1;
+            }
+        }
     }
-
-    .settings {
-      background-color: rgba($clickgui-base-color, 0.5);
-      border-left: solid 4px $accent-color;
-      padding: 0 11px 0 7px;
-    }
-
-    &.has-settings {
-      .name::after {
-        content: "";
-        display: block;
-        position: absolute;
-        height: 10px;
-        width: 10px;
-        right: 15px;
-        top: 50%;
-        background-image: url("/img/clickgui/icon-settings-expand.svg");
-        background-position: center;
-        background-repeat: no-repeat;
-        opacity: 0.5;
-        transform-origin: 50% 50%;
-        transform: translateY(-50%) rotate(-90deg);
-        transition: ease opacity 0.2s,
-        ease transform 0.4s;
-      }
-
-      &.expanded .name::after {
-        transform: translateY(-50%) rotate(0);
-        opacity: 1;
-      }
-    }
-  }
 </style>

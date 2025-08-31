@@ -15,19 +15,25 @@
 {#if count !== undefined}
     <div class="counter" style="color: {mapToColor(count)}" in:fly={{ y: -5, duration: 200 }}
          out:fly={{ y: -5, duration: 200 }}>
+        <span class="text">Blocks:</span>
         {count}
     </div>
 {/if}
 
 <style lang="scss">
-  @use "../../../colors.scss" as *;
+    @use "../../../colors.scss" as *;
 
-  .counter {
-    background-color: rgba($blockcounter-base-color, 0.68);
-    border-radius: 5px;
-    white-space: nowrap;
-    padding: 5px 8px;
-    font-weight: 500;
-    transform: translate(-100%);
-  }
+    .counter {
+        background-color: rgba($background-color, $opacity);
+        border-radius: 12px;
+        padding: 5px 8px;
+        font-weight: 500;
+        //border: $border-thing;
+        box-shadow: $primary-shadow;
+        text-shadow: $primary-shadow;
+
+        .text {
+            color: white;
+        }
+    }
 </style>
