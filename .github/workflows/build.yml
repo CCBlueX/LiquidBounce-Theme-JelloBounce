@@ -7,6 +7,9 @@ on:
 permissions:
   contents: write
 
+env:
+  MARKETPLACE_ITEM_ID: 265
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -58,3 +61,13 @@ jobs:
           tag_name: ${{ steps.version_tag.outputs.version }}
           prerelease: false
           name: "Build Release ${{ steps.version_tag.outputs.version }}"
+
+      - name: Upload to LiquidBounce Marketplace
+        run: |
+          curl -X POST \
+            "https://api.liquidbounce.net/api/v3/marketplace/${{ env.MARKETPLACE_ITEM_ID }}/revisions" \
+            -H "Authorization: Bearer ${{ secrets.API_TOKEN }}" \
+            -F "file=@jellobounce.zip" \
+            -F "version=${{ steps.version_tag.outputs.version }}" \
+            -F "changelog=Automated build from commit ${{ github.sha }}" \
+            --fail-with-body
