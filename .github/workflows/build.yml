@@ -8,6 +8,7 @@ permissions:
   contents: write
 
 env:
+  ZIP_NAME: jellobounce
   MARKETPLACE_ITEM_ID: 265
 
 jobs:
@@ -17,28 +18,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Needed for git operations
-          
+          fetch-depth: 0
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
-          
+
       - name: Install dependencies
         run: npm install
-        
+
       - name: Build project
         run: npm run build
-        
+
       - name: Create dist archive
-        run: zip -r jellobounce.zip dist/
-        
-      - name: Upload jellobounce.zip artifact
+        run: zip -r ${{ env.ZIP_NAME }}.zip dist/
+
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: jellobounce
-          path: jellobounce.zip
+          name: ${{ env.ZIP_NAME }}
+          path: ${{ env.ZIP_NAME }}.zip
 
       - name: Generate version tag
         id: version_tag
@@ -53,21 +54,22 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git tag ${{ steps.version_tag.outputs.version }}
           git push origin ${{ steps.version_tag.outputs.version }}
-
+      
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: jellobounce.zip
+          files: ${{ env.ZIP_NAME }}.zip
           tag_name: ${{ steps.version_tag.outputs.version }}
-          prerelease: false
+          prerelease: true
           name: "Build Release ${{ steps.version_tag.outputs.version }}"
-
+      
       - name: Upload to LiquidBounce Marketplace
         run: |
           curl -X POST \
             "https://api.liquidbounce.net/api/v3/marketplace/${{ env.MARKETPLACE_ITEM_ID }}/revisions" \
             -H "Authorization: Bearer ${{ secrets.API_TOKEN }}" \
-            -F "file=@jellobounce.zip" \
+            -F "file=@${{ env.ZIP_NAME }}.zip" \
             -F "version=${{ steps.version_tag.outputs.version }}" \
             -F "changelog=Automated build from commit ${{ github.sha }}" \
+            -F "channel=alpha" \
             --fail-with-body
