@@ -1,7 +1,8 @@
 {
+  "id": "jellobounce",
   "name": "JelloBounce",
   "version": "0.1.0",
-  "author": ["CCBlueX"],
+  "authors": ["larryngton", "CCBlueX"],
   "screens": [
     "clickgui",
     "title",
@@ -39,7 +40,7 @@
     "SFPRODISPLAYMEDIUM.ttf",
     "SFPRODISPLAYREGULAR.ttf"
   ],
-  "background": [
+  "backgrounds": [
     {
       "name": "background1",
       "types": ["png"]
