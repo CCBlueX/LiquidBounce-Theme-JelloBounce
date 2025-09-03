@@ -10,15 +10,15 @@
     import {getComponents, getGameWindow} from "../../integration/rest";
     import {listen} from "../../integration/ws";
     import type {Component} from "../../integration/types";
-    import Taco from "./elements/taco/Taco.svelte";
+    import Stats from "./elements/stats/Stats.svelte";
     import type {ComponentsUpdateEvent, ScaleFactorChangeEvent} from "../../integration/events";
     import Keystrokes from "./elements/keystrokes/Keystrokes.svelte";
     import Effects from "./elements/Effects.svelte";
     import BlockCounter from "./elements/BlockCounter.svelte";
     import ArmorItems from "./elements/inventory/ArmorItems.svelte";
     import InventoryContainer from "./elements/inventory/InventoryContainer.svelte";
-    import Text from "./elements/Text.svelte";
     import CraftingInput from "./elements/inventory/CraftingInput.svelte";
+    import DraggableComponent from "./elements/DraggableComponent.svelte";
 
     let zoom = 100;
     let components: Component[] = [];
@@ -44,7 +44,7 @@
 <div class="hud" style="zoom: {zoom}%">
     {#each components as c}
         {#if c.settings.enabled}
-            <div style="{c.settings.alignment}">
+            <DraggableComponent name={c.name} id={c.id} alignment={c.settings.alignment} >
                 {#if c.name === "Watermark"}
                     <Watermark/>
                 {:else if c.name === "ArrayList"}
@@ -67,18 +67,14 @@
                     <InventoryContainer/>
                 {:else if c.name === "CraftingInventory"}
                     <CraftingInput/>
-                {:else if c.name === "Taco"}
-                    <Taco/>
+                {:else if c.name === "Stats"}
+                    <Stats/>
                 {:else if c.name === "Keystrokes"}
                     <Keystrokes/>
                 {:else if c.name === "Effects"}
                     <Effects/>
-                {:else if c.name === "Text"}
-                    <Text settings={c.settings} />
-                {:else if c.name === "Image"}
-                    <img alt="" src="{c.settings.src}" style="scale: {c.settings.scale};">
                 {/if}
-            </div>
+            </DraggableComponent>
         {/if}
     {/each}
 </div>

@@ -1,0 +1,11 @@
+{
+  "name": "Notifications",
+  "enabled": true,
+  "singleton": true,
+  "alignment": {
+    "horizontalAlignment": "Left",
+    "horizontalOffset": 15,
+    "verticalAlignment": "Top",
+    "verticalOffset": 75
+  }
+}

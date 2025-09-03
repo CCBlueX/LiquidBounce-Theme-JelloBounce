@@ -1,0 +1,11 @@
+{
+  "name": "Keystrokes",
+  "enabled": true,
+  "singleton": true,
+  "alignment": {
+    "horizontalAlignment": "Right",
+    "horizontalOffset": 15,
+    "verticalAlignment": "Bottom",
+    "verticalOffset": 55
+  }
+}
