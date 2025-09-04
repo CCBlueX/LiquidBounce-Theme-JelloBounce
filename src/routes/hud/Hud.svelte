@@ -18,6 +18,7 @@
     import InventoryContainer from "./elements/inventory/InventoryContainer.svelte";
     import CraftingInput from "./elements/inventory/CraftingInput.svelte";
     import DraggableComponent from "./elements/DraggableComponent.svelte";
+    import Stats from "./elements/stats/Stats.svelte";
 
     let zoom = 100;
     let metadata: Metadata;
