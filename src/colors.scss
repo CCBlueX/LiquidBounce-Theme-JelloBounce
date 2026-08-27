@@ -311,6 +311,55 @@
   --confetti-shadow-color: rgba(255, 255, 255, 0.12);
 }
 
+/* JelloBounce mapping for the UI introduced upstream (tabs, settings window,
+   HUD editor). Expressed in this theme's own language: translucent black
+   surfaces, white hairline borders, soft shadows - rather than accent-driven
+   defaults, which are near-invisible against a #2e2e2e accent. */
+:root {
+  --clickgui-tabs-background-color: rgba(0, 0, 0, 0.45);
+  --clickgui-tabs-shadow-color: rgba(0, 0, 0, 0.5);
+  --clickgui-tab-hover-background-color: rgba(255, 255, 255, 0.08);
+  --clickgui-tab-active-background-color: rgba(255, 255, 255, 0.15);
+  --clickgui-tab-active-border-color: rgba(255, 255, 255, 0.25);
+
+  --clickgui-window-background-color: rgba(0, 0, 0, 0.45);
+  --clickgui-window-shadow-color: rgba(0, 0, 0, 0.5);
+  --clickgui-window-header-background-color: rgba(0, 0, 0, 0.6);
+  --clickgui-window-header-border-color: rgba(255, 255, 255, 0.15);
+  --clickgui-global-settings-divider-color: rgba(255, 255, 255, 0.12);
+
+  --clickgui-input-background-color: rgba(0, 0, 0, 0.45);
+  --clickgui-input-border-color: rgba(255, 255, 255, 0.15);
+  --clickgui-button-background-color: rgba(255, 255, 255, 0.12);
+  --clickgui-button-hover-background-color: rgba(255, 255, 255, 0.2);
+  --clickgui-setting-group-border-color: rgba(255, 255, 255, 0.15);
+
+  --clickgui-switch-track-color: rgba(255, 255, 255, 0.2);
+  --clickgui-switch-thumb-color: rgba(255, 255, 255, 0.65);
+  --clickgui-switch-track-active-color: rgba(255, 255, 255, 0.35);
+  --clickgui-switch-thumb-active-color: #ffffff;
+  --clickgui-slider-track-color: rgba(255, 255, 255, 0.2);
+  --clickgui-slider-handle-color: #ffffff;
+  --clickgui-slider-fill-color: rgba(255, 255, 255, 0.65);
+
+  --clickgui-dropdown-background-color: rgba(0, 0, 0, 0.85);
+  --clickgui-dropdown-border-color: rgba(255, 255, 255, 0.15);
+  --clickgui-dropdown-option-selected-color: #ffffff;
+  --clickgui-selection-chip-background-color: rgba(255, 255, 255, 0.08);
+  --clickgui-selection-chip-selected-background-color: rgba(255, 255, 255, 0.18);
+  --clickgui-selection-chip-selected-color: #ffffff;
+
+  --clickgui-hud-editor-drawer-background-color: rgba(0, 0, 0, 0.45);
+  --clickgui-hud-editor-drawer-shadow-color: rgba(0, 0, 0, 0.5);
+  --clickgui-hud-editor-drawer-component-background-color: rgba(0, 0, 0, 0.35);
+  --clickgui-hud-editor-drawer-component-border-color: rgba(255, 255, 255, 0.15);
+  --clickgui-hud-editor-drawer-component-hover-background-color: rgba(255, 255, 255, 0.1);
+  --clickgui-hud-editor-drawer-component-hover-border-color: rgba(255, 255, 255, 0.3);
+  --clickgui-hud-editor-drawer-toggle-button-background-color: rgba(255, 255, 255, 0.12);
+  --clickgui-hud-editor-component-settings-background-color: rgba(0, 0, 0, 0.45);
+  --clickgui-hud-editor-component-settings-shadow-color: rgba(0, 0, 0, 0.5);
+}
+
 $accent-color: #2e2e2e;
 
 $healthprogress-neutral: rgb(200, 200, 200);

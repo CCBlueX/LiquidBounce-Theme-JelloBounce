@@ -37,6 +37,7 @@
 </div>
 
 <style lang="scss">
+  @use "../../../colors.scss" as *;
 
   .available-tabs {
     position: fixed;
@@ -46,9 +47,10 @@
     display: flex;
     gap: 5px;
     padding: 6px;
-    border-radius: 999px;
+    border-radius: 12px;
     background-color: var(--clickgui-tabs-background-color);
-    box-shadow: 0 0 10px var(--clickgui-tabs-shadow-color);
+    box-shadow: $primary-shadow;
+    border: $border-thing;
     z-index: 9999999999;
   }
 
@@ -58,7 +60,7 @@
     padding: 6px 14px;
     font-size: 14px;
     font-weight: 600;
-    border-radius: 999px;
+    border-radius: 8px;
     cursor: pointer;
     transition: ease background-color 0.2s, ease color 0.2s;
     border: solid 1px transparent;

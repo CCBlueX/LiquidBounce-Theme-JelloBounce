@@ -40,22 +40,11 @@
 
   $GRID_SIZE: 10px;
 
-  .background {
-    background-color: rgba($background-color, 0.45);
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -5;
-    height: 100vh;
-    width: 100vw;
-  }
-
   .clickgui {
     overflow: hidden;
     position: absolute;
     will-change: opacity;
-    left: 0;
-    top: 0;
+    inset: 0;
     z-index: 1;
 
     &.grid {

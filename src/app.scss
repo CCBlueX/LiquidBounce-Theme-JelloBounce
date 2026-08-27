@@ -66,6 +66,13 @@
     outline: none;
 }
 
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
 body {
     font-family: "sf-pro", sans-serif;
     user-select: none;
