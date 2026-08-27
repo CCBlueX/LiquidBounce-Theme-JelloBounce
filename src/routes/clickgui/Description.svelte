@@ -38,6 +38,7 @@
 <style lang="scss">
   @use "../../colors.scss" as *;
 
+
   .description-wrapper {
     position: fixed;
     z-index: 999999999999; // high value to ensure it appears on top

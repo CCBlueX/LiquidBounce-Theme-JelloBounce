@@ -6,37 +6,40 @@
     import {onMount} from "svelte";
     import {getPlayerInventory} from "../../../../integration/rest";
 
+    export let rowLength: number;
+    export let backgroundColor: string = "var(--inventory-background-color)";
+    export let gap: string = "0.5rem";
+    export let getRenderedStacks: (inventory: PlayerInventory) => ItemStack[];
+
+    let inventory: PlayerInventory | undefined;
     let stacks: ItemStack[] = [];
 
-    function updateStacks(inventory: PlayerInventory) {
-        stacks = inventory.main.slice(9);
-    }
-
     listen("clientPlayerInventory", (data: ClientPlayerInventoryEvent) => {
-        updateStacks(data.inventory);
+        inventory = data.inventory;
     });
 
     onMount(async () => {
-        const inventory = await getPlayerInventory();
-        updateStacks(inventory);
+        inventory = await getPlayerInventory();
     });
+
+    $: stacks = inventory ? getRenderedStacks(inventory) : [];
 </script>
 
-<div class="container">
+<div class="inventory" style="
+    background-color: {backgroundColor};
+    gap: {gap};
+    --row-length: {rowLength};
+">
     {#each stacks as stack (stack)}
         <ItemStackView {stack}/>
     {/each}
 </div>
 
 <style lang="scss">
-  @use "../../../../colors" as *;
-
-  .container {
-    background-color: rgba($hotbar-base-color, 0.5);
+  .inventory {
     padding: 4px;
     border-radius: 5px;
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    gap: 0.5rem;
+    grid-template-columns: repeat(var(--row-length), 1fr);
   }
 </style>

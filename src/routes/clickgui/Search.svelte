@@ -6,6 +6,7 @@
     import {highlightModuleName} from "./clickgui_store";
     import {onMount} from "svelte";
     import {convertToSpacedString, spaceSeperatedNames} from "../../theme/theme_config";
+    import {isClickGuiScreen} from "../../util/utils";
 
     export let modules: Module[];
 
@@ -16,6 +17,21 @@
     let query: string;
     let filteredModules: Module[] = [];
     let selectedIndex = 0;
+    let hasFocus = false;
+
+    type SearchableModule = {
+        raw: Module;
+        lowerName: string;
+        lowerAliases: string[];
+    };
+
+    // Cache lowercase names/aliases to avoid repeated toLowerCase() per keystroke.
+    let searchableModules: SearchableModule[] = [];
+    $: searchableModules = modules.map(m => ({
+        raw: m,
+        lowerName: m.name.toLowerCase(),
+        lowerAliases: m.aliases.map(a => a.toLowerCase()),
+    }));
 
     function reset() {
         filteredModules = [];
@@ -23,24 +39,26 @@
         $highlightModuleName = null;
     }
 
-    function filterModules() {
+    function filterModules(resetIndex: boolean) {
         if (!query) {
             reset();
             return;
         }
 
-        selectedIndex = 0;
+        if (resetIndex) {
+            selectedIndex = 0;
+        }
 
         const pureQuery = query.toLowerCase().replaceAll(" ", "");
 
-        filteredModules = modules.filter((m) => m.name.toLowerCase().includes(pureQuery)
-            || m.aliases.some(a => a.toLowerCase().includes(pureQuery))
-        );
+        filteredModules = searchableModules.filter(({ raw, lowerName, lowerAliases }) => {
+            return lowerName.includes(pureQuery)
+                || lowerAliases.some(a => a.includes(pureQuery));
+        }).map(it => it.raw);
     }
 
     async function handleKeyDown(e: KeyboardKeyEvent) {
-        if (e.screen === undefined || !e.screen.class.startsWith("net.ccbluex.liquidbounce") ||
-            !(e.screen.title === "ClickGUI" || e.screen.title === "VS-CLICKGUI")) {
+        if (!isClickGuiScreen(e.screen)) {
             return;
         }
 
@@ -88,9 +106,14 @@
     }
 
     function handleWindowClick(e: MouseEvent) {
-        if (!searchContainerElement.contains(e.target as Node)) {
+        if (!searchContainerElement.contains(e.target as Node) && !hasFocus) {
             reset();
         }
+    }
+
+    function handleMouseOut() {
+        hasFocus = false;
+        reset();
     }
 
     function handleWindowKeyDown() {
@@ -122,7 +145,9 @@
             return;
         }
         mod.enabled = e.enabled;
-        filteredModules = filteredModules;
+
+        // Refilter modules to update enabled state
+        filterModules(false);
     });
 
     listen("keyboardKey", handleKeyDown);
@@ -134,10 +159,14 @@
 
 <svelte:window on:click={handleWindowClick} on:keydown={handleWindowKeyDown} on:contextmenu={handleWindowClick}/>
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
         class="search"
         class:has-results={query}
+        class:has-focus={hasFocus}
         bind:this={searchContainerElement}
+        on:mouseenter={() => hasFocus = true}
+        on:mouseleave={handleMouseOut}
 >
     <input
             type="text"
@@ -146,7 +175,7 @@
             spellcheck="false"
             bind:value={query}
             bind:this={searchInputElement}
-            on:input={filterModules}
+            on:input={() => filterModules(true)}
             on:keydown={handleBrowserKeyDown}
             on:focusin={async () => await setTyping(true)}
             on:focusout={async () => await setTyping(false)}
@@ -186,10 +215,11 @@
 <style lang="scss">
   @use "../../colors.scss" as *;
 
+
   .search {
     position: fixed;
     left: 50%;
-    top: 50px;
+    top: 70px;
     transform: translateX(-50%);
     width: 600px;
     border-radius: 50px;
@@ -206,7 +236,8 @@
       border-radius: 12px;
     }
 
-    &:focus-within {
+    &:focus-within,
+    &.has-focus {
       z-index: 9999999999;
     }
   }

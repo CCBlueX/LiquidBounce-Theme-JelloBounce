@@ -95,7 +95,9 @@
         }
     }
 
-    async function toggleExpanded() {
+    async function toggleExpanded(e: MouseEvent) {
+        e.stopPropagation();
+
         expanded = !expanded;
         await setItem(path, expanded.toString());
     }
@@ -105,7 +107,6 @@
 <div
         class="module"
         class:expanded
-        class:has-settings={hasSettings}
         in:slide={{ duration: 500, easing: quintOut }}
         out:slide={{ duration: 500, easing: quintOut }}
 >
@@ -121,6 +122,17 @@
             class:highlight={name === $highlightModuleName}
     >
         {$spaceSeperatedNames ? convertToSpacedString(name) : name}
+
+        {#if hasSettings}
+            <button
+                    class="expand-arrow"
+                    aria-label="Expand settings"
+                    aria-expanded={expanded}
+                    on:click={toggleExpanded}
+            >
+                <span class="expand-arrow-icon"></span>
+            </button>
+        {/if}
     </div>
 
     {#if expanded && configurable}

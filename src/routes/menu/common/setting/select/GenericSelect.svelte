@@ -48,6 +48,7 @@
 <style lang="scss">
   @use "../../../../../colors.scss" as *;
 
+
   .select {
     cursor: pointer;
     min-width: 250px;

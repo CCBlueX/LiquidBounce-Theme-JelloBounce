@@ -9,6 +9,7 @@
 <style lang="scss">
   @use "../../../../colors.scss" as *;
 
+
   .tag {
     background-color: $misc-background-color;
     color: $text-color;

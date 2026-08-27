@@ -47,6 +47,7 @@
 <style lang="scss">
   @use "../../../../colors.scss" as *;
 
+
   .main-button {
     display: grid;
     grid-template-columns: max-content 1fr max-content;

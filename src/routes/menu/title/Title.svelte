@@ -1,6 +1,7 @@
 <script lang="ts">
     import MainButton from "./buttons/MainButton.svelte";
     import Account from "../common/header/Account.svelte";
+    import ConfettiBackground from "./ConfettiBackground.svelte";
     import { onDestroy } from "svelte";
     import {
         browse,
@@ -9,10 +10,10 @@
         openScreen,
         toggleBackgroundShaderEnabled,
     } from "../../../integration/rest";
-    import Menu from "../common/Menu.svelte";
     import { fly } from "svelte/transition";
     import { onMount } from "svelte";
     import { notification } from "../common/header/notification_store";
+    import { isAnniversary } from "../../../util/utils";
 
     let regularButtonsShown = true;
     let clientButtonsShown = false;
@@ -63,7 +64,11 @@
     updateTime();
 </script>
 
-<Menu>
+<div class="title-screen">
+    {#if isAnniversary()}
+        <ConfettiBackground/>
+    {/if}
+
     <div class="content">
         <div class="clock" transition:fly|global={{ duration: 500, y: -50 }}>
             {currentTime}
@@ -132,10 +137,18 @@
             {/if}
         </div>
     </div>
-</Menu>
+</div>
 
 <style lang="scss">
     @use "../../../colors.scss" as *;
+
+    .title-screen {
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
 
     .clock {
         color: white;

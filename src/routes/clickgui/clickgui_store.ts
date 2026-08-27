@@ -7,6 +7,8 @@ export interface TDescription {
     y: number;
 }
 
+export const os: Writable<string | null> = writable<string | null>(null);
+
 export const description: Writable<TDescription | null> = writable(null);
 
 export const maxPanelZIndex: Writable<number> = writable(0);
@@ -20,3 +22,5 @@ export const showGrid: Writable<boolean> = writable(false);
 export const snappingEnabled: Writable<boolean> = writable(true);
 
 export const gridSize: Writable<number> = writable(10);
+
+export const darken = writable(true);

@@ -106,7 +106,8 @@
 {/if}
 
 <style lang="scss">
-    @use "../../../../colors.scss" as *;
+  @use "../../../../colors.scss" as *;
+
 
     .targethud {
         width: 250px;

@@ -3,6 +3,10 @@
   "name": "JelloBounce",
   "version": "0.1.0",
   "authors": ["larryngton", "CCBlueX"],
+  "colors": {
+    "Accent": "#2e2e2e",
+    "Tint": "#000000"
+  },
   "screens": [
     "clickgui",
     "title",
@@ -27,12 +31,17 @@
     "Hotbar",
     "Scoreboard",
     "ArmorItems",
+    "InventoryStatistics",
     "Inventory",
     "CraftingInventory",
+    "EnderChestInventory",
     "TargetHud",
     "BlockCounter",
     "Effects",
     "Keystrokes",
+    "Image",
+    "KeyBinds",
+    "ClosedCaptions",
     "Stats"
   ],
   "fonts": [

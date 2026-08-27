@@ -53,7 +53,8 @@
 </div>
 
 <style lang="scss">
-    @use "../../../colors.scss" as *;
+  @use "../../../colors.scss" as *;
+
 
     .setting {
         padding: 7px 0 2px 0;

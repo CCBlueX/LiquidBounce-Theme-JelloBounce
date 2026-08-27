@@ -24,6 +24,7 @@
 <style lang="scss">
   @use "../../../../colors.scss" as *;
 
+
   .key {
     height: 35px;
     background-color: rgba($background-color, $opacity);

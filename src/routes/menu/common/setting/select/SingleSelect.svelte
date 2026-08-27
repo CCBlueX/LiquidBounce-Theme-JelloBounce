@@ -34,6 +34,7 @@
 <style lang="scss">
   @use "../../../../../colors.scss" as *;
 
+
   .title {
     font-weight: 600;
   }

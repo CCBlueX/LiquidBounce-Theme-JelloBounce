@@ -21,12 +21,13 @@
 </div>
 
 <style lang="scss">
-  @use "sass:color";
   @use "../../../../colors.scss" as *;
+
 
   .switch-setting {
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
   .title {
@@ -57,7 +58,6 @@
     width: 30px;
     height: 30px;
     align-items: center;
-    cursor: pointer;
     margin: 0 10px;
 
     input {

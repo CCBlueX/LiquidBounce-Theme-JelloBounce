@@ -26,8 +26,9 @@
 <style lang="scss">
   @use "../../../../colors.scss" as *;
 
+
   .label {
-    color: $hotbar-text-color;
+    color: var(--hotbar-text-color);
     position: absolute;
     font-size: 14px;
     right: 5px;

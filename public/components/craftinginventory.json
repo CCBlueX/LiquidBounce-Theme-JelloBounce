@@ -1,11 +1,12 @@
 {
   "name": "CraftingInventory",
+  "description": "Displays the contents of your crafting grid.",
   "enabled": false,
   "singleton": true,
   "alignment": {
     "horizontalAlignment": "Right",
-    "horizontalOffset": 15,
+    "horizontalOffset": 35,
     "verticalAlignment": "Bottom",
-    "verticalOffset": 150
+    "verticalOffset": 305
   }
 }

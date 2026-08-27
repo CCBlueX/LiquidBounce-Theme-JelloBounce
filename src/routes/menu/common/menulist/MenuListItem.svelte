@@ -48,6 +48,7 @@
 <style lang="scss">
   @use "../../../../colors.scss" as *;
 
+
   .menu-list-item {
     display: grid;
     grid-template-areas:

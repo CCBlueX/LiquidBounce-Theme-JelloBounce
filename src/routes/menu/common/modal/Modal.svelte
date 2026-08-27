@@ -2,6 +2,7 @@
   import { fade, fly, scale } from "svelte/transition";
   import { createEventDispatcher } from "svelte";
   import { expoOut } from "svelte/easing";
+  import { portal } from "../../../../integration/util";
 
   export let title: string;
   export let visible: boolean;
@@ -15,7 +16,7 @@
 </script>
 
 {#if visible}
-  <div class="modal-wrapper" transition:fade|global={{ duration: 250 }}>
+  <div class="modal-wrapper" transition:fade|global={{ duration: 250 }} use:portal>
     <div class="modal" transition:scale={{ duration: 500, easing: expoOut }}>
       <button class="button-modal-close" on:click={handleClick}>
         <img src="img/menu/icon-close.svg" alt="close" />
@@ -33,6 +34,7 @@
 
 <style lang="scss">
   @use "../../../../colors.scss" as *;
+
 
   .modal-wrapper {
     position: fixed;

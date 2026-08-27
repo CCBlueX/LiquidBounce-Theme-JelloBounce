@@ -3,6 +3,7 @@
 <style lang="scss">
   @use "../../../../colors.scss" as *;
 
+
   .divider {
     height: 50px;
     width: 4px;

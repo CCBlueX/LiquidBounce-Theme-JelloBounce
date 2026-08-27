@@ -63,7 +63,7 @@
         border-radius: 100px;
         top: 50%;
         transform: translate(-50%, -50%);
-        background: white;
+        background: var(--notification-toggle-knob-color);
         transition: all 0.2s ease-out;
       }
 

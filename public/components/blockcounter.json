@@ -1,5 +1,6 @@
 {
   "name": "BlockCounter",
+  "description": "Shows the number of blocks available for bridging.",
   "enabled": true,
   "singleton": true,
   "alignment": {
@@ -7,5 +8,19 @@
     "horizontalOffset": 0,
     "verticalAlignment": "Center",
     "verticalOffset": 300
-  }
+  },
+  "values": [
+    {
+      "type": "CHOOSE",
+      "name": "IconPosition",
+      "value": "Left",
+      "choices": [
+        "None",
+        "Left",
+        "Right",
+        "Top",
+        "Bottom"
+      ]
+    }
+  ]
 }

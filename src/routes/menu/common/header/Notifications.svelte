@@ -45,6 +45,7 @@
 <style lang="scss">
   @use "../../../../colors.scss" as *;
 
+
   .notifications {
     display: grid;
     grid-template-columns: 1fr;
@@ -91,7 +92,7 @@
       justify-content: center;
 
       &.error {
-        background-color: $menu-error-color;
+        background-color: var(--menu-header-notification-icon-error-background-color);
       }
     }
   }

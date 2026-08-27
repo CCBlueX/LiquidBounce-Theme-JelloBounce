@@ -24,6 +24,7 @@
 <style lang="scss">
   @use "../../../../colors.scss" as *;
 
+
   .icon-text-input {
     display: grid;
     grid-template-columns: max-content 1fr 60px;

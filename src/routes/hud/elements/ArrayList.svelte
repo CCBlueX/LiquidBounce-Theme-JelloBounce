@@ -8,6 +8,10 @@
     import {fly} from "svelte/transition";
     import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
 
+    export let settings: { [name: string]: any };
+
+    let cSettings = settings as HudArrayListSettings;
+
     let enabledModules: Module[] = [];
 
     async function updateEnabledModules() {
@@ -15,20 +19,26 @@
         const visibleModules = modules.filter(m => m.enabled && !m.hidden);
 
         const modulesWithWidths = visibleModules.map(module => {
-                let formattedName = $spaceSeperatedNames ? convertToSpacedString(module.name) : module.name;
-                let fullName = module.tag == null ? formattedName : formattedName + " " + module.tag;
+            const formattedName = $spaceSeperatedNames ? convertToSpacedString(module.name) : module.name;
+            const fullName = module.tag == null || !cSettings.showTags
+                ? formattedName
+                : formattedName + " " + module.tag;
 
-                return {
-                    ...module,
-                    width: getTextWidth(fullName, "500 14px Inter")
-                };
-            }
-        );
+            return {
+                ...module,
+                width: getTextWidth(fullName, "500 14px Inter")
+            };
+        });
 
-        modulesWithWidths.sort((a, b) => b.width - a.width);
+        modulesWithWidths.sort((a, b) => cSettings.order === "Ascending" ? a.width - b.width : b.width - a.width);
 
         enabledModules = modulesWithWidths;
         await tick();
+    }
+
+    $: if (cSettings !== settings) {
+        cSettings = settings as HudArrayListSettings;
+        updateEnabledModules();
     }
 
     spaceSeperatedNames.subscribe(async () => {
@@ -50,9 +60,14 @@
 
 <div class="arraylist">
     {#each enabledModules as {name, tag} (name)}
-        <div class="module" animate:flip={{ duration: 200 }} transition:fly={{ x: 50, duration: 200 }}>
+        <div
+                class="module"
+                style={cSettings.itemAlignment === "Left" ? "margin-right: auto;" : "margin-left: auto;"}
+                animate:flip={{ duration: 200 }}
+                transition:fly={{ x: 50, duration: 200 }}
+        >
             {$spaceSeperatedNames ? convertToSpacedString(name) : name}
-            {#if tag}
+            {#if tag && cSettings.showTags}
                 <span class="tag"> {tag}</span>
             {/if}
         </div>

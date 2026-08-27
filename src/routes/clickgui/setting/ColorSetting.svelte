@@ -85,7 +85,8 @@
 </div>
 
 <style lang="scss">
-    @use "../../../colors.scss" as *;
+  @use "../../../colors.scss" as *;
+
 
     .setting {
         display: grid;
