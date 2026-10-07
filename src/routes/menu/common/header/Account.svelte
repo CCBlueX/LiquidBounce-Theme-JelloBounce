@@ -14,7 +14,7 @@
     const session = await getSession();
     username = session.username;
     avatar = session.avatar;
-    premium = session.premium;
+    premium = session.online;
   }
 
   onMount(async () => {

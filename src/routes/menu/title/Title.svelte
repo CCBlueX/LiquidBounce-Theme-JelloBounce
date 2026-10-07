@@ -22,9 +22,9 @@
     onMount(() => {
         setTimeout(async () => {
             const update = await getClientUpdate();
-            if (update.updateAvailable) {
+            if (update.update) {
                 notification.set({
-                    title: `LiquidBounce ${update.newestVersion?.clientVersion} has been released!`,
+                    title: `LiquidBounce ${update.update.clientVersion} has been released!`,
                     message: `Download it from liquidbounce.net!`,
                     error: false,
                     delay: 99999999,
