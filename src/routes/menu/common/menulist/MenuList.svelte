@@ -9,9 +9,11 @@
     export let elementCount = -1;
 
     let sortableElement: HTMLElement | undefined;
+    let remountKey = 0;
 
     interface MenuListSortEvent {
-        newOrder: number[]
+        newOrder: number[];
+        complete: () => void;
     }
 
     const dispatch = createEventDispatcher<{
@@ -19,8 +21,16 @@
     }>();
 
     function handleChange(e: any) {
+        let completed = false;
+
         dispatch("sort", {
-            newOrder: calculateNewOrder(e.oldIndex, e.newIndex, elementCount)
+            newOrder: calculateNewOrder(e.oldIndex, e.newIndex, elementCount),
+            complete: () => {
+                if (!completed) {
+                    completed = true;
+                    remountKey++;
+                }
+            }
         });
     }
 
@@ -33,15 +43,17 @@
 </script>
 
 <div class="menu-list" transition:scale|global={{ duration: 500, easing: expoOut }}>
-    {#if sortable && elementCount > -1}
-        <SortableList class="menu-list-items" onSort={handleChange} forceFallback={true} animation={150}>
-            <slot/>
-        </SortableList>
-    {:else}
-        <div class="menu-list-items">
-            <slot/>
-        </div>
-    {/if}
+    {#key remountKey}
+        {#if sortable && elementCount > -1}
+            <SortableList class="menu-list-items" onSort={handleChange} forceFallback={true} animation={150}>
+                <slot/>
+            </SortableList>
+        {:else}
+            <div class="menu-list-items">
+                <slot/>
+            </div>
+        {/if}
+    {/key}
 </div>
 
 <style lang="scss">
