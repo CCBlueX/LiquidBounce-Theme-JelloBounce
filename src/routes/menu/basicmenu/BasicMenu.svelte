@@ -1,19 +1,15 @@
 <script lang="ts">
-    import ButtonContainer from "../common/buttons/ButtonContainer.svelte";
-    import IconButton from "../common/buttons/IconButton.svelte";
+    import MainButton from "../title/buttons/MainButton.svelte";
     import {openScreen, toggleBasicMode} from "../../../integration/rest";
-    import {fly} from "svelte/transition";
 </script>
 
 <!-- Clicks also reach the vanilla screen below, so this stays in its empty left strip. -->
-<div class="basic-menu" transition:fly|global={{duration: 700, x: -100}}>
+<div class="basic-menu">
     <div class="buttons">
-        <ButtonContainer vertical>
-            <IconButton title="Full Mode" icon="liquidbounce" on:click={toggleBasicMode}/>
-            <IconButton title="Click GUI" icon="clickgui" on:click={() => openScreen("clickgui")}/>
-            <IconButton title="Alt Manager" icon="user" on:click={() => openScreen("altmanager")}/>
-            <IconButton title="Proxy Manager" icon="proxymanager" on:click={() => openScreen("proxymanager")}/>
-        </ButtonContainer>
+        <MainButton title="Full Mode" icon="liquidbounce" on:click={toggleBasicMode} index={0}/>
+        <MainButton title="ClickGUI" icon="clickgui" on:click={() => openScreen("clickgui")} index={1}/>
+        <MainButton title="Accounts" icon="user" on:click={() => openScreen("altmanager")} index={2}/>
+        <MainButton title="Proxies" icon="proxymanager" on:click={() => openScreen("proxymanager")} index={3}/>
     </div>
 </div>
 
@@ -28,6 +24,9 @@
   }
 
   .buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
     margin-left: 50px;
   }
 

@@ -83,6 +83,7 @@
       left: 50%;
       transform: translateX(-50%);
       text-shadow: $primary-shadow;
+      white-space: nowrap;
     }
 
     img {

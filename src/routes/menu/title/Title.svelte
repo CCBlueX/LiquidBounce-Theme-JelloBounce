@@ -9,6 +9,7 @@
         getClientUpdate,
         openScreen,
         toggleBackgroundShaderEnabled,
+        toggleBasicMode,
     } from "../../../integration/rest";
     import { fly } from "svelte/transition";
     import { onMount } from "svelte";
@@ -127,12 +128,18 @@
                     on:click={() => openScreen("options")}
                     index={4}
                 />
+                <MainButton
+                    title="Basic Mode"
+                    icon="eye"
+                    on:click={toggleBasicMode}
+                    index={5}
+                />
                 <!-- <MainButton title="Scripts" icon="scripts" index={2}/> -->
                 <MainButton
                     title="Back"
                     icon="back-large"
                     on:click={toggleButtons}
-                    index={5}
+                    index={6}
                 />
             {/if}
         </div>
