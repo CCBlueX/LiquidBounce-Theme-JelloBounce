@@ -4,7 +4,8 @@
     import type {PlayerData, TextComponent as TTExtComponent} from "../../../../integration/types";
     import {onMount} from "svelte";
     import {getPlayerData} from "../../../../integration/rest";
-    import {fade} from "svelte/transition";
+    import {fade, fly} from "svelte/transition";
+    import {expoOut} from "svelte/easing";
     import TextComponent from "../../../menu/common/TextComponent.svelte";
     import type {ClientPlayerDataEvent, OverlayMessageEvent} from "../../../../integration/events";
 
