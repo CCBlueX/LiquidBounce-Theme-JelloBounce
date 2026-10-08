@@ -41,7 +41,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: $text-dimmed-color;
+    background-color: rgba($text-color, 0.2);
     transition: ease 0.25s;
     height: 12px;
     width: 12px;
@@ -61,8 +61,8 @@
     }
 
     input:checked + .slider {
-      background-color: $setting-color;
-      box-shadow: 0 0 17px rgba(black, 0.75);
+      background-color: $text-color;
+      box-shadow: 0 0 8px rgba($text-color, 0.6);
     }
   }
 </style>

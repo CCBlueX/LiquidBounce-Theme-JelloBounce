@@ -42,7 +42,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: $text-dimmed-color;
+    background-color: rgba($text-color, 0.2);
     transition: ease 0.25s;
     height: 20px;
     width: 20px;
@@ -64,8 +64,8 @@
       display: none;
 
       &:checked + .button {
-        background-color: $accent-color;
-        box-shadow: 0 0 25px rgba(black, 0.75);
+        background-color: $text-color;
+        box-shadow: 0 0 12px rgba($text-color, 0.6);
       }
     }
   }
