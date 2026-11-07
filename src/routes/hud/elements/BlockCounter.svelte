@@ -4,6 +4,7 @@
     import type {BlockCountChangeEvent} from "../../../integration/events";
     import {mapToColor} from "../../../util/color_utils";
 
+
     let count = $state<number | undefined>(undefined);
 
     listen("blockCountChange", (data: BlockCountChangeEvent) => {

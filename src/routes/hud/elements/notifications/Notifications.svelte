@@ -10,6 +10,7 @@
     import warn from "/sounds/warn.ogg";
     import success from "/sounds/success.ogg";
     import { Howl } from "howler";
+    import type { HudNotificationsSettings } from "../../components";
 
     interface TNotification {
         animationKey: number;
