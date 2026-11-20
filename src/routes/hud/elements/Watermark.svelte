@@ -25,9 +25,7 @@
     let address: string | null = null;
 
     onMount(async () => {
-        await getSelectedProtocol();
         protocols = await getProtocols();
-        selectedProtocol = await getSelectedProtocol();
         await getServerData();
     });
 
@@ -43,22 +41,21 @@
         address = data.address;
     });
 
-    onMount(() => {
-        const timer = setTimeout(() => {
-            visible = false;
-        }, 150);
-
-        return () => clearTimeout(timer);
-    });
-
     async function refreshSession() {
         const session = await getSession();
         username = session.username;
         avatar = session.avatar;
     }
 
-    onMount(async () => {
-        await refreshSession();
+    // The intro text stops updating once its outro starts, so hide it only after it has its data
+    onMount(() => {
+        let timer: ReturnType<typeof setTimeout> | undefined;
+        Promise.all([
+            getSelectedProtocol().then(p => selectedProtocol = p),
+            refreshSession(),
+        ]).finally(() => timer = setTimeout(() => visible = false, 150));
+
+        return () => clearTimeout(timer);
     });
 
     listen("session", async () => {
