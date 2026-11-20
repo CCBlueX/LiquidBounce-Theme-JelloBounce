@@ -4,7 +4,7 @@
     import ConfettiBackground from "./ConfettiBackground.svelte";
     import { onDestroy } from "svelte";
     import {
-        browse,
+        openLink,
         exitClient,
         getClientUpdate,
         openScreen,
@@ -15,6 +15,8 @@
     import { onMount } from "svelte";
     import { notification } from "../common/header/notification_store";
     import { isAnniversary } from "../../../util/utils";
+    import { escapeLayer } from "../../../integration/escape";
+    import { prefetchServers } from "../multiplayer/server_store";
 
     let regularButtonsShown = true;
     let clientButtonsShown = false;
@@ -46,6 +48,9 @@
             }, 500);
         }
     }
+
+    const layer = escapeLayer(toggleButtons);
+    $: layer.setOpen(clientButtonsShown);
 
     let currentTime: string;
 
@@ -88,6 +93,7 @@
                     title="Multiplayer"
                     icon="multiplayer"
                     let:parentHovered
+                    on:mouseenter={prefetchServers}
                     on:click={() => openScreen("multiplayer")}
                     index={1}
                 ></MainButton>
