@@ -21,14 +21,13 @@
     "vite": "^6.4.3"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@jhubbardsf/svelte-sortablejs": "^1.1.0",
     "@simonwep/pickr": "^1.9.0",
     "chart.js": "^4.5.0",
     "chartjs-plugin-dragdata": "^2.3.1",
     "country-code-lookup": "^0.1.2",
     "dateformat": "^5.0.3",
-    "howler": "^2.2.4",
-    "@faker-js/faker": "^8.4.1",
     "nouislider": "^15.7.1",
     "svelte-spa-router": "^4.0.1"
   }

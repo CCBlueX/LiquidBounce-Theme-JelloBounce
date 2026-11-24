@@ -44,6 +44,17 @@ export async function getMetadata(): Promise<Metadata> {
     return data;
 }
 
+/** Plays one of the theme's own sounds (metadata `sounds`) through the game's sound engine. */
+export async function playThemeSound(name: string) {
+    await fetch(`${API_BASE}/client/sound`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({sound: `liquidbounce:theme/jellobounce/${name}`})
+    });
+}
+
 export async function getModules(): Promise<Module[]> {
     const response = await fetch(`${API_BASE}/client/modules`);
     const data: [Module] = await response.json();

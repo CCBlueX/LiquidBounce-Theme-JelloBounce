@@ -58,6 +58,7 @@
     "SFPRODISPLAYREGULAR.ttf"
   ],
   "nativeFont": "Inter Medium",
+  "sounds": ["enable", "disable", "warn", "success"],
   "backgrounds": [
     {
       "name": "background1",
