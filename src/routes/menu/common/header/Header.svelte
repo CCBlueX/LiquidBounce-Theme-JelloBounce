@@ -62,13 +62,5 @@
     justify-content: space-between;
     align-items: center;
     z-index: 1;
-
-    .notifications {
-      position: fixed;
-      left: 50%;
-      bottom: 50px;
-      transform: translateX(-50%);
-      z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
-    }
   }
 </style>

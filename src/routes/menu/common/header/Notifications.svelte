@@ -70,7 +70,7 @@
 <div class="notifications">
     {#if visible && current}
         <div class="notification"
-             transition:fly|global={{duration: 500, y: 100}}
+             transition:fly|global={{duration: 500, y: -100}}
              on:introend={scheduleDismiss}
              on:outroend={showPending}>
             <div class="icon" class:error={current.error}>
@@ -87,6 +87,10 @@
 
 
   .notifications {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 350px;
     display: grid;
     grid-template-columns: 1fr;
     z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
